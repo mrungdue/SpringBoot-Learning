@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@mrungdue-patch-1
+    - uses: actions/checkout@master
     - name: Set up JDK 17
       uses: actions/setup-java@v4
       with:
@@ -37,20 +37,20 @@ jobs:
   compile:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@mrungdue-patch-1
+      - uses: actions/checkout@master
       - name: compile module
         run: mvn clean install -DskipTests -pl 2.x/chapter2-1 -am
   
   pass:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@mrungdue-patch-1
+      - uses: actions/checkout@master
       - name: run test commands without nondex
         run: mvn -pl 2.x/chapter2-1 test -Dtest=com.didispace.chapter21.Chapter21ApplicationTests#testUserController
   flaky:
    runs-on: ubuntu-latest
 
    steps:
-     - uses: actions/checkout@mrungdue-patch-1
+     - uses: actions/checkout@master
      - name: run test commands with nondex
        run: -pl 2.x/chapter2-1 edu.illinois:nondex-maven-plugin:2.1.1:nondex -Dtest=com.didispace.chapter21.Chapter21ApplicationTests#testUserController -DnondexRuns=10
